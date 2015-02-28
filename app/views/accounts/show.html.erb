@@ -1,0 +1,328 @@
+<p class="lead">Account</p>
+<h1><%= @account.Name %></h1>
+<div class="row">
+    <div class="col-md-12">
+        <!-- general form elements -->
+        <div class="box box-primary">
+            <div class="box-header">
+                <h3 class="box-title">Account Information</h3>
+            </div><!-- /.box-header -->
+            <!-- form start -->
+            <div class="box-body" style="min-height:320px">
+                <div class="col-md-6">
+                    <div class="form-group">
+                        <label for="contact" class="col-md-4">Name</label>
+                        <div class="col-md-8">
+                            <p><%= @account.Name%></p>
+                        </div>
+                    </div>
+                    <br/>
+                    <div class="form-group">
+                        <label for="account" class="col-md-4">Parent Account</label>
+                        <div class="col-md-8">
+                            <p><%= @parent_account.Name%></p>
+                        </div>
+                    </div>
+                    <br/>
+                    <div class="form-group">
+                        <label for="type" class="col-md-4">Account Number</label>
+                        <div class="col-md-8">
+                            <p><%= @account.AccountNumber%></p>
+                        </div>
+                    </div>
+                    <br/>
+                    <div class="form-group">
+                        <label for="status" class="col-md-4">Site</label>
+                        <div class="col-md-8">
+                            <p><%= @account.Site%></p>
+                        </div>
+                    </div>
+                    <br/>
+                    <div class="form-group">
+                        <label for="startdate" class="col-md-4">Type</label>
+                        <div class="col-md-8">
+                            <p><%= @account.Type%></p>
+                        </div>
+                    </div>
+                    <br/>
+                    <div class="form-group">
+                        <label for="priority" class="col-md-4">Industry</label>
+                        <div class="col-md-8">
+                            <p><%= @account.Industry%></p>
+                        </div>
+                    </div>
+                    <br/>
+                    
+                    <div class="form-group">
+                        <label for="origin" class="col-md-4">Annual Revenue</label>
+                        <div class="col-md-8">
+                            <p><%=number_to_currency(@account.AnnualRevenue, :unit => "USD$ ") %></p>
+                        </div>
+                    </div>
+                    <br/>
+                </div>
+                <div class="col-md-6">
+                    <div class="form-group">
+                        <label for="contact" class="col-md-4">Rating</label>
+                        <div class="col-md-8">
+                            <p><%= @account.Rating%></p>
+                        </div>
+                    </div>
+                    <br/>
+                    <div class="form-group">
+                        <label for="account" class="col-md-4">Phone</label>
+                        <div class="col-md-8">
+                            <p><%= @account.Phone%></p>
+                        </div>
+                    </div>
+                    <br/>
+                    <div class="form-group">
+                        <label for="type" class="col-md-4">Fax</label>
+                        <div class="col-md-8">
+                            <p><%= @account.Fax%></p>
+                        </div>
+                    </div>
+                    <br/>
+                    <div class="form-group">
+                        <label for="status" class="col-md-4">Website</label>
+                        <div class="col-md-8">
+                            <p><%= @account.Website%></p>
+                        </div>
+                    </div>
+                    <br/>
+                    <div class="form-group">
+                        <label for="startdate" class="col-md-4">Ticker Symbol</label>
+                        <div class="col-md-8">
+                            <p><%= @account.TickerSymbol%></p>
+                        </div>
+                    </div>
+                    <br/>
+                    <div class="form-group">
+                        <label for="priority" class="col-md-4">Ownership</label>
+                        <div class="col-md-8">
+                            <p><%= @account.Ownership%></p>
+                        </div>
+                    </div>
+                    <br/>
+                    
+                    <div class="form-group">
+                        <label for="origin" class="col-md-4">Employees</label>
+                        <div class="col-md-8">
+                            <p><%= @account.NumberOfEmployees%></p>
+                        </div>
+                    </div>
+                    <br/>
+                    <div class="form-group">
+                        <label for="origin" class="col-md-4">SIC Code</label>
+                        <div class="col-md-8">
+                            <p><%= @account.Sic%></p>
+                        </div>
+                    </div>
+                    <br/>
+                </div>
+                <br/>
+                <br/>
+                <br/>
+                <br/>
+            </div><!-- /.box-body -->
+            
+            
+        </div><!-- /.box -->
+
+    </div>
+</div>
+<div class="row">
+    <div class="col-md-12">
+        <div class="box box-primary" style="min-height:340px">
+            <div class="box-header">
+                <h3 class="box-title">Address Information</h3>
+            </div><!-- /.box-header -->
+            <!-- form start -->
+            <div class="box-body">
+                <div class="col-md-6">
+                    <div class="form-group">
+                        <label for="contact" class="col-md-4">Billing Street</label>
+                        <div class="col-md-8">
+                            <p><%= @account.BillingStreet%></p>
+                        </div>
+                    </div>
+                    <br/>
+                    <div class="form-group">
+                        <label for="account" class="col-md-4">Billing City</label>
+                        <div class="col-md-8">
+                            <p><%= @account.BillingCity%></p>
+                        </div>
+                    </div>
+                    <br/>
+                    <div class="form-group">
+                        <label for="type" class="col-md-4">Billing State/Province</label>
+                        <div class="col-md-8">
+                            <p><%= @account.BillingState%></p>
+                        </div>
+                    </div>
+                    <br/>
+                    <div class="form-group">
+                        <label for="status" class="col-md-4">Billing Zip/Postal Code</label>
+                        <div class="col-md-8">
+                            <p><%= @account.BillingPostalCode%></p>
+                        </div>
+                    </div>
+                    <br/>
+                    <div class="form-group">
+                        <label for="startdate" class="col-md-4">Billing Country</label>
+                        <div class="col-md-8">
+                            <p><%= @account.BillingCountry%></p>
+                        </div>
+                    </div>
+                    <br/>
+                </div>
+                <div class="col-md-6">
+                    <div class="form-group">
+                        <label for="contact" class="col-md-4">Shipping Street</label>
+                        <div class="col-md-8">
+                            <p><%= @account.ShippingStreet%></p>
+                        </div>
+                    </div>
+                    <br/>
+                    <div class="form-group">
+                        <label for="account" class="col-md-4">Shipping City</label>
+                        <div class="col-md-8">
+                            <p><%= @account.ShippingCity%></p>
+                        </div>
+                    </div>
+                    <br/>
+                    <div class="form-group">
+                        <label for="type" class="col-md-4">Shipping State/Province</label>
+                        <div class="col-md-8">
+                            <p><%= @account.ShippingState%></p>
+                        </div>
+                    </div>
+                    <br/>
+                    <div class="form-group">
+                        <label for="status" class="col-md-4">Shipping Zip/Postal Code</label>
+                        <div class="col-md-8">
+                            <p><%= @account.ShippingPostalCode%></p>
+                        </div>
+                    </div>
+                    <br/>
+                    <div class="form-group">
+                        <label for="startdate" class="col-md-4">Shipping Country</label>
+                        <div class="col-md-8">
+                            <p><%= @account.ShippingCountry%></p>
+                        </div>
+                    </div>
+                    <br/>
+                </div>
+            </div><!-- /.box-body -->
+            
+            
+        </div><!-- /.box -->
+
+    </div>
+</div>
+<div class="row">
+    <div class="col-md-12">
+        <div class="box box-primary" style="min-height:300px">
+            <div class="box-header">
+                <h3 class="box-title">Additional Information</h3>
+            </div><!-- /.box-header -->
+            <!-- form start -->
+            <div class="box-body">
+                <div class="col-md-6">
+                    <div class="form-group">
+                        <label for="contact" class="col-md-4">Customer Priority</label>
+                        <div class="col-md-8">
+                            <p><%= @account.CustomerPriority__c%></p>
+                        </div>
+                    </div>
+                    <br/>
+                    <div class="form-group">
+                        <label for="account" class="col-md-4">SLA Expiration Date</label>
+                        <div class="col-md-8">
+                            <p><%= Date.parse(@account.SLAExpirationDate__c).strftime('%A %d %B %Y') if @account.SLAExpirationDate__c%></p>
+                        </div>
+                    </div>
+                    <br/>
+                    <div class="form-group">
+                        <label for="type" class="col-md-4">Number of Locations</label>
+                        <div class="col-md-8">
+                            <p><%= @account.NumberofLocations__c %></p>
+                        </div>
+                    </div>
+                    <br/>
+                    <div class="form-group">
+                        <label for="status" class="col-md-4">Active</label>
+                        <div class="col-md-8">
+                            <p><%= @account.Active__c%></p>
+                        </div>
+                    </div>
+                    <br/>
+                </div>
+                <div class="col-md-6">
+                    <div class="form-group">
+                        <label for="status" class="col-md-4">SLA</label>
+                        <div class="col-md-8">
+                            <p><%= @account.SLA__c%></p>
+                        </div>
+                    </div>
+                    <br/>
+                    <div class="form-group">
+                        <label for="account" class="col-md-4">SLA Serial Number</label>
+                        <div class="col-md-8">
+                            <p><%= @account.SLASerialNumber__c%></p>
+                        </div>
+                    </div>
+                    <br/>
+                    <div class="form-group">
+                        <label for="type" class="col-md-4">Upsell Opportunity</label>
+                        <div class="col-md-8">
+                            <p><%= @account.UpsellOpportunity__c%></p>
+                        </div>
+                    </div>
+                    <br/>
+                </div>
+                <br/>
+                <br/>
+                <br/>
+                <br/>
+                <br/>
+                <br/>
+                <br/>
+                <br/>
+            </div><!-- /.box-body -->
+            
+            <div class="box-footer">
+            </div>
+            
+        </div><!-- /.box -->
+
+    </div>
+</div>
+
+<div class="row">
+    <div class="col-md-12">
+        <div class="box box-primary" style="min-height:300px">
+            <div class="box-header">
+                <h3 class="box-title">Description Information</h3>
+            </div><!-- /.box-header -->
+            <!-- form start -->
+            <div class="box-body">
+                <div class="form-group">
+                    <label for="contact" class="col-md-4">Description</label>
+                    <div class="col-md-8">
+                        <p><%= @account.Description%></p>
+                    </div>
+                </div>
+                <br/>
+                <br/>
+                <br/>
+                <br/>
+            </div><!-- /.box-body -->
+            
+            <div class="box-footer">
+            </div>
+            
+        </div><!-- /.box -->
+
+    </div>
+</div>

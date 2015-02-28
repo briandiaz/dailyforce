@@ -1,0 +1,142 @@
+
+    <!-- left column -->
+<form accept-charset="UTF-8" action="/cases" class="new_case" id="new_case" method="post" role="form">
+<div class="row">
+    <div class="col-md-6">
+        <!-- general form elements -->
+        <div class="box box-primary">
+            <div class="box-header">
+                <h3 class="box-title">Case Information</h3>
+            </div><!-- /.box-header -->
+            <!-- form start -->
+            <div class="box-body">
+                <div class="form-group">
+                    <label for="contact" class="col-md-4">Contact</label>
+                    <div class="col-md-8">
+                        <%= force_select_data(data: @contacts, model: 'Case', property: 'ContactId', class_name: 'form-control', id: 'contact', name: 'contact', value: @case) %>
+                    </div>
+                </div>
+                <br/>
+                <div class="form-group">
+                    <label for="account" class="col-md-4">Account</label>
+                    <div class="col-md-8">
+                        
+                        <%= force_select_data(data: @accounts, model: 'Case', property: 'AccountId', class_name: 'form-control', id: 'account', name: 'account', value: @case) %>
+                    </div>
+                </div>
+                <br/>
+                <div class="form-group">
+                    <label for="type" class="col-md-4">Type</label>
+                    <div class="col-md-8">
+                        <%= the_force_select(model: 'Case', property: 'Type', class_name: 'form-control', id: 'type', name: 'type', value: @case) %>
+                    </div>
+                </div>
+                <br/>
+                <div class="form-group">
+                    <label for="status" class="col-md-4">Status</label>
+                    <div class="col-md-8">
+                        <%= the_force_select(model: 'Case', property: 'Status', class_name: 'form-control', id: 'status', name: 'status', value: @case) %>                    
+                    </div>
+                </div>
+                <br/>
+                <div class="form-group">
+                    <label for="startdate" class="col-md-4">Case Reason</label>
+                    <div class="col-md-8">
+                        <%= the_force_select(model: 'Case', property: 'Reason', class_name: 'form-control', id: 'reason', name: 'reason', value: @case) %>  
+                    </div>
+                </div>
+                <br/>
+                <div class="form-group">
+                    <label for="priority" class="col-md-4">Priority</label>
+                    <div class="col-md-8">
+                        <%= the_force_select(model: 'Case', property: 'Priority', class_name: 'form-control', id: 'priority', name: 'priority', value: @case) %> 
+                    </div>
+                </div>
+                <br/>
+                
+                <div class="form-group">
+                    <label for="origin" class="col-md-4">Origin</label>
+                    <div class="col-md-8">
+                        <%= the_force_select(model: 'Case', property: 'Origin', class_name: 'form-control', id: 'origin', name: 'origin', value: @case) %> 
+                    </div>
+                </div>
+                <br/>
+                <br/>
+                <br/>
+                <br/>
+            </div><!-- /.box-body -->
+            
+            <div class="box-footer">
+                <button type="submit" class="btn btn-primary">Submit</button>
+            </div>
+            
+        </div><!-- /.box -->
+
+    </div><!--/.col (left) -->
+    <div class="col-md-6">
+        <div class="box box-danger">
+            <div class="box-header">
+                <h3 class="box-title">Additional Information</h3>
+            </div>
+        
+            <div class="box-body">
+                <div class="form-group">
+                    <label for="product" class="col-md-4">Product</label>
+                    <div class="col-md-8">
+                        <%= the_force_select(model: 'Case', property: 'Product__c', class_name: 'form-control', id: 'product', name: 'product', value: @case) %> 
+                    </div>
+                </div>
+                <br/>
+                <div class="form-group">
+                    <label for="potentialliability" class="col-md-4">Potential Liability</label>
+                    <div class="col-md-8">
+                        <%= the_force_select(model: 'Case', property: 'PotentialLiability__c', class_name: 'form-control', id: 'potentialliability', name: 'potentialliability', value: @case) %> 
+                    </div>
+                </div>
+                <br/>
+                <div class="form-group">
+                    <label for="engineeringreqnumber" class="col-md-4">Engineering Req Number</label>
+                    <div class="col-md-8">
+                        <%= form_input(type:"number", html_class:"form-control", id:"engineeringreqnumber", placeholder: "Enter Engineering Req Number", value: @case, property: "Name") %>
+                    </div>
+                </div>
+                <br/>
+                <div class="form-group">
+                    <label for="slaviolation" class="col-md-4">SLA Violation</label>
+                    <div class="col-md-8">
+                        <%= the_force_select(model: 'Case', property: 'SLAViolation__c', class_name: 'form-control', id: 'slaviolation', name: 'slaviolation', value: @case) %>
+                    </div>
+                </div>
+                <br/>
+            </div>
+            <div class="box-footer">
+            </div>
+        </div>
+        
+        <div class="box box-warming">
+            <div class="box-header">
+                <h3 class="box-title">Description Information</h3>
+            </div><!-- /.box-header -->
+            
+            <div class="box-body" style="min-height:130px;">
+                <div class="form-group">
+                    <label for="subject" class="col-md-4">Subject</label>
+                    <div class="col-md-8">
+                        <%= form_input(type:"text", html_class:"form-control", id:"subject", placeholder: "Enter Subject", value: @case, property: "Subject") %>
+                    </div>
+                </div>
+                <br/>
+                <div class="form-group">
+                    <label class="col-md-4">Description</label>
+                    <div class="col-md-8">
+                        <%= form_input_textarea(html_class:"form-control", id:"description", placeholder: "Enter Description", value: @case, property: "Description") %>
+                    </div>
+                </div>
+                <br/>
+            </div>
+            <div class="box-footer">
+            </div>
+        </div>
+    </div>
+</div>
+</form>

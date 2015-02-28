@@ -1,0 +1,203 @@
+<p class="lead">Case</p>
+<h1>#<%= @case.CaseNumber %></h1>
+    <!-- left column -->
+<div class="row">
+    <div class="col-md-6">
+        <!-- general form elements -->
+        <div class="box box-primary">
+            <div class="box-header">
+                <h3 class="box-title">Case Information</h3>
+            </div><!-- /.box-header -->
+            <!-- form start -->
+            <div class="box-body">
+                <div class="form-group">
+                    <label for="contact" class="col-md-4">Account</label>
+                    <div class="col-md-8">
+                        <%= link_to account_path(@account.Id), :class=> "cod-tooltip"  do%> 
+                        <%=  @account.Name %>
+                        <span class="cod-tooltip-content">
+                            <span class="cod-tooltip-text">
+                                <span class="cod-tooltip-inner">
+                                    Phone: <%= @account.Phone %><br />
+                                    Fax: <%= @account.Fax %><br />
+                                    Website: <%= @account.Website %><br />
+                                </span>
+                            </span>
+                        </span>
+                        <% end %>
+                    </div>
+                </div>
+                <br/>
+                <div class="form-group">
+                    <label for="account" class="col-md-4">Contact</label>
+                    <div class="col-md-8">
+                        <%= link_to contact_path(@contact.Id), :class=> "cod-tooltip"  do%> 
+                        <%=  @contact.Name %>
+                        <span class="cod-tooltip-content">
+                            <span class="cod-tooltip-text">
+                                <span class="cod-tooltip-inner">
+                                    Phone: <%= @contact.HomePhone %><br />
+                                    Mobile: <%= @contact.MobilePhone %><br />
+                                    Email: <%= @contact.Email %><br />
+                                </span>
+                            </span>
+                        </span>
+                        <% end %>
+                    </div>
+                </div>
+                <br/>
+                <div class="form-group">
+                    <label for="type" class="col-md-4">Type</label>
+                    <div class="col-md-8">
+                        <p><%= @case.Type %> </p>
+                    </div>
+                </div>
+                <br/>
+                <div class="form-group">
+                    <label for="status" class="col-md-4">Status</label>
+                    <div class="col-md-8">
+                        <p><%= @case.Status %> </p>                    
+                    </div>
+                </div>
+                <br/>
+                <div class="form-group">
+                    <label for="startdate" class="col-md-4">Case Reason</label>
+                    <div class="col-md-8">
+                        <p><%= @case.Reason %> </p>  
+                    </div>
+                </div>
+                <br/>
+                <div class="form-group">
+                    <label for="priority" class="col-md-4">Priority</label>
+                    <div class="col-md-8">
+                        <p><%= @case.Priority %> </p> 
+                    </div>
+                </div>
+                <br/>
+                
+                <div class="form-group">
+                    <label for="origin" class="col-md-4">Origin</label>
+                    <div class="col-md-8">
+                        <p><%= @case.Origin %> </p> 
+                    </div>
+                </div>
+                <br/>
+            </div><!-- /.box-body -->
+            
+            <div class="box-footer">
+            </div>
+            
+        </div><!-- /.box -->
+        <div class="box box-danger">
+            <div class="box-header">
+                <h3 class="box-title">Additional Information</h3>
+            </div>
+        
+            <div class="box-body">
+                <div class="form-group">
+                    <label for="product" class="col-md-4">Product</label>
+                    <div class="col-md-8">
+                        <p><%= @case.Product__c %> </p> 
+                    </div>
+                </div>
+                <br/>
+                <div class="form-group">
+                    <label for="potentialliability" class="col-md-4">Potential Liability</label>
+                    <div class="col-md-8">
+                        <p><%= @case.PotentialLiability__c %> </p> 
+                    </div>
+                </div>
+                <br/>
+                <div class="form-group">
+                    <label for="engineeringreqnumber" class="col-md-4">Engineering Req Number</label>
+                    <div class="col-md-8">
+                        <p><%= @case.EngineeringReqNumber__c %> </p>
+                    </div>
+                </div>
+                <br/>
+                <div class="form-group">
+                    <label for="slaviolation" class="col-md-4">SLA Violation</label>
+                    <div class="col-md-8">
+                        <p><%= @case.SLAViolation__c %> </p>
+                    </div>
+                </div>
+                <br/>
+            </div>
+            <div class="box-footer">
+            </div>
+        </div>
+
+    </div><!--/.col (left) -->
+    <div class="col-md-6">
+        <div class="box box-danger">
+            <div class="box-header">
+                <h3 class="box-title">Complementary Information</h3>
+            </div>
+        
+            <div class="box-body">
+                <div class="form-group">
+                    <label for="product" class="col-md-4">Date/Time Opened</label>
+                    <div class="col-md-8">
+                        <p><%= DateTime.parse(@case.CreatedDate).strftime('%A %d %B %Y - %l:%M %p') if @case.CreatedDate%> </p> 
+                    </div>
+                </div>
+                <br/>
+                <div class="form-group">
+                    <label for="potentialliability" class="col-md-4">Date/Time Closed</label>
+                    <div class="col-md-8">
+                        <p><%= DateTime.parse(@case.ClosedDate).strftime('%A %d %B %Y - %l:%M %p') if @case.ClosedDate%> </p> 
+                    </div>
+                </div>
+                <br/>
+                <div class="form-group">
+                    <label for="product" class="col-md-4">Created By</label>
+                    <div class="col-md-8">
+                        <p><%= @created_by.Name %> at <%= DateTime.parse(@case.CreatedDate).strftime('%A %d %B %Y - %l:%M %p') if @case.CreatedDate%> </p> 
+                    </div>
+                </div>
+                <br/>
+                <div class="form-group">
+                    <label for="product" class="col-md-4">Last Modified By</label>
+                    <div class="col-md-8">
+                        <p><%= @modified_by.Name %> at <%= DateTime.parse(@case.LastModifiedDate).strftime('%A %d %B %Y - %l:%M %p') if @case.LastModifiedDate%> </p> 
+                    </div>
+                </div>
+                <br/>
+                <div class="form-group">
+                    <label for="potentialliability" class="col-md-4">Date/Time Closed</label>
+                    <div class="col-md-8">
+                        <p><%= DateTime.parse(@case.ClosedDate).strftime('%A %d %B %Y - %l:%M %p') if @case.ClosedDate%> </p> 
+                    </div>
+                </div>
+                <br/>
+            </div>
+            <div class="box-footer">
+            </div>
+        </div>
+        
+        <div class="box box-warming">
+            <div class="box-header">
+                <h3 class="box-title">Description Information</h3>
+            </div><!-- /.box-header -->
+            
+            <div class="box-body" style="min-height:130px;">
+                <div class="form-group">
+                    <label for="subject" class="col-md-4">Subject</label>
+                    <div class="col-md-8">
+                        <p><%= @case.Subject %> </p>
+                    </div>
+                </div>
+                <br/>
+                <div class="form-group">
+                    <label class="col-md-4">Description</label>
+                    <div class="col-md-8">
+                        <p><%= @case.Description %> </p>
+                    </div>
+                </div>
+                <br/>
+            </div>
+            <div class="box-footer">
+            </div>
+        </div>
+    </div>
+</div>

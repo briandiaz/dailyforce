@@ -1,0 +1,332 @@
+
+    <!-- left column -->
+<%= form_tag(accept_charset:"UTF-8", action:"/accounts", object_id: params[:id], controller: controller, role:"form") %>
+<div class="row">
+    <div class="col-md-12">
+        <!-- general form elements -->
+        <div class="box box-primary">
+            <div class="box-header">
+                <h3 class="box-title">Account Information</h3>
+            </div><!-- /.box-header -->
+            <!-- form start -->
+            <div class="box-body" style="min-height:320px">
+                <div class="col-md-6">
+                    <div class="form-group">
+                        <label for="contact" class="col-md-4">Name</label>
+                        <div class="col-md-8">
+                            <%= form_input(type:"text", html_class:"form-control", id:"name", placeholder: "Enter Name", value: @account, property: "Name", required: true) %>
+                        </div>
+                    </div>
+                    <br/>
+                    <div class="form-group">
+                        <label for="account" class="col-md-4">Parent Account</label>
+                        <div class="col-md-8">
+                            <%= force_select_data(data: @accounts, model: 'Account', property: 'ParentId', class_name: 'form-control', id: 'parent', name: 'parent', value: @account) %>
+                        </div>
+                    </div>
+                    <br/>
+                    <div class="form-group">
+                        <label for="type" class="col-md-4">Account Number</label>
+                        <div class="col-md-8">
+                            <%= form_input(type:"number", html_class:"form-control", id:"number", placeholder: "Enter Account Number", value: @account, property: "AccountNumber") %>
+                        </div>
+                    </div>
+                    <br/>
+                    <div class="form-group">
+                        <label for="status" class="col-md-4">Site</label>
+                        <div class="col-md-8">
+                            <%= form_input(type:"text", html_class:"form-control", id:"site", placeholder: "Enter Site", value: @account, property: "Site") %>
+                        </div>
+                    </div>
+                    <br/>
+                    <div class="form-group">
+                        <label for="startdate" class="col-md-4">Type</label>
+                        <div class="col-md-8">
+                            <%= the_force_select(model: 'Account', property: 'Type', class_name: 'form-control', id: 'type', name: 'type', value: @account) %>
+                        </div>
+                    </div>
+                    <br/>
+                    <div class="form-group">
+                        <label for="priority" class="col-md-4">Industry</label>
+                        <div class="col-md-8">
+                            <%= the_force_select(model: 'Account', property: 'Industry', class_name: 'form-control', id: 'industry', name: 'industry', value: @account) %> 
+                        </div>
+                    </div>
+                    <br/>
+                    
+                    <div class="form-group">
+                        <label for="origin" class="col-md-4">Annual Revenue</label>
+                        <div class="col-md-8">
+                            <%= form_input(type:"number", html_class:"form-control", id:"annualrevenue", additional: 'step="0.01" min="0.00"', placeholder: "Enter Annual Revenue", value: @account, property: "AnnualRevenue") %>
+                        </div>
+                    </div>
+                    <br/>
+                </div>
+                <div class="col-md-6">
+                    <div class="form-group">
+                        <label for="contact" class="col-md-4">Rating</label>
+                        <div class="col-md-8">
+                            <%= the_force_select(model: 'Account', property: 'Rating', class_name: 'form-control', id: 'rating', name: 'rating', value: @account) %>
+                        </div>
+                    </div>
+                    <br/>
+                    <div class="form-group">
+                        <label for="account" class="col-md-4">Phone</label>
+                        <div class="col-md-8">
+                            <%= form_input(type:"text", html_class:"form-control", id:"phone", additional: 'data-inputmask=\'"mask": "(999) 999-9999"\'', value: @account, property: "Phone") %>
+                        </div>
+                    </div>
+                    <br/>
+                    <div class="form-group">
+                        <label for="type" class="col-md-4">Fax</label>
+                        <div class="col-md-8">
+                            <%= form_input(type:"text", html_class:"form-control", id:"fax", additional: ' data-inputmask=\'"mask": "(999) 999-9999"\' data-mask', value: @account, property: "Fax") %>
+                        </div>
+                    </div>
+                    <br/>
+                    <div class="form-group">
+                        <label for="status" class="col-md-4">Website</label>
+                        <div class="col-md-8">
+                            <%= form_input(type:"text", html_class:"form-control", id:"website", placeholder: "Enter Website", value: @account, property: "Site") %>
+                        </div>
+                    </div>
+                    <br/>
+                    <div class="form-group">
+                        <label for="startdate" class="col-md-4">Ticker Symbol</label>
+                        <div class="col-md-8">   
+                            <%= form_input(type:"text", html_class:"form-control", id:"ticker", placeholder: "Enter Ticker Symbol", value: @account, property: "TickerSymbol") %>
+                        </div>
+                    </div>
+                    <br/>
+                    <div class="form-group">
+                        <label for="priority" class="col-md-4">Ownership</label>
+                        <div class="col-md-8">
+                            <%= the_force_select(model: 'Account', property: 'Ownership', class_name: 'form-control', id: 'ownership', name: 'ownership', value: @account) %> 
+                        </div>
+                    </div>
+                    <br/>
+                    
+                    <div class="form-group">
+                        <label for="origin" class="col-md-4">Employees</label>
+                        <div class="col-md-8">
+                            <%= form_input(type:"number", html_class:"form-control", id:"employees", additional: 'step="1"', placeholder: "Enter Number Of Employees", value: @account, property: "NumberOfEmployees") %>
+                        </div>
+                    </div>
+                    <br/>
+                    <div class="form-group">
+                        <label for="origin" class="col-md-4">SIC Code</label>
+                        <div class="col-md-8">
+                            <%= form_input(type:"text", html_class:"form-control", id:"sic", placeholder: "Enter Sic Code", value: @account, property: "Sic") %>
+                        </div>
+                    </div>
+                    <br/>
+                </div>
+                <br/>
+                <br/>
+                <br/>
+                <br/>
+            </div><!-- /.box-body -->
+            
+            
+        </div><!-- /.box -->
+
+    </div>
+</div>
+<div class="row">
+    <div class="col-md-12">
+        <div class="box box-primary" style="min-height:340px">
+            <div class="box-header">
+                <h3 class="box-title">Address Information</h3>
+            </div><!-- /.box-header -->
+            <!-- form start -->
+            <div class="box-body">
+                <div class="col-md-6">
+                    <div class="form-group">
+                        <label for="contact" class="col-md-4">Billing Street</label>
+                        <div class="col-md-8">
+                            <%= form_input_textarea(html_class:"form-control", id:"billingstreet", placeholder: "Enter Billing Street", value: @account, property: "BillingStreet") %>
+                        </div>
+                    </div>
+                    <br/>
+                    <div class="form-group">
+                        <label for="account" class="col-md-4">Billing City</label>
+                        <div class="col-md-8">
+                            <%= form_input(type:"text", html_class:"form-control", id:"billingcity", placeholder: "Enter Billing City", value: @account, property: "BillingCity") %>
+                        </div>
+                    </div>
+                    <br/>
+                    <div class="form-group">
+                        <label for="type" class="col-md-4">Billing State/Province</label>
+                        <div class="col-md-8">
+                            <%= form_input(type:"text", html_class:"form-control", id:"billingstate", placeholder: "Enter Billing State/Province", value: @account, property: "BillingState") %>
+                        </div>
+                    </div>
+                    <br/>
+                    <div class="form-group">
+                        <label for="status" class="col-md-4">Billing Zip/Postal Code</label>
+                        <div class="col-md-8">
+                            <%= form_input(type:"text", html_class:"form-control", id:"billingpostalcode", placeholder: "Enter Billing Zip/Postal Code", value: @account, property: "BillingPostalCode") %>
+                        </div>
+                    </div>
+                    <br/>
+                    <div class="form-group">
+                        <label for="startdate" class="col-md-4">Billing Country</label>
+                        <div class="col-md-8">
+                            <%= form_input(type:"text", html_class:"form-control", id:"billingcountry", placeholder: "Enter Billing Country", value: @account, property: "BillingCountry") %>
+                        </div>
+                    </div>
+                    <br/>
+                </div>
+                <div class="col-md-6">
+                    <div class="form-group">
+                        <label for="contact" class="col-md-4">Shipping Street</label>
+                        <div class="col-md-8">
+                            <%= form_input_textarea(html_class:"form-control", id:"shippingstreet", placeholder: "Enter Shipping Street", value: @account, property: "ShippingStreet") %>
+                        </div>
+                    </div>
+                    <br/>
+                    <div class="form-group">
+                        <label for="account" class="col-md-4">Shipping City</label>
+                        <div class="col-md-8">
+                            <%= form_input(type:"text", html_class:"form-control", id:"shippingcity", placeholder: "Enter Shipping City", value: @account, property: "ShippingCity") %>
+                        </div>
+                    </div>
+                    <br/>
+                    <div class="form-group">
+                        <label for="type" class="col-md-4">Shipping State/Province</label>
+                        <div class="col-md-8">
+                            <%= form_input(type:"text", html_class:"form-control", id:"shippingstate", placeholder: "Enter Shipping State/Province", value: @account, property: "ShippingState") %>
+                        </div>
+                    </div>
+                    <br/>
+                    <div class="form-group">
+                        <label for="status" class="col-md-4">Shipping Zip/Postal Code</label>
+                        <div class="col-md-8">
+                            <%= form_input(type:"text", html_class:"form-control", id:"shippingpostalcode", placeholder: "Enter Shipping Zip/Postal Code", value: @account, property: "ShippingPostalCode") %>
+                        </div>
+                    </div>
+                    <br/>
+                    <div class="form-group">
+                        <label for="startdate" class="col-md-4">Shipping Country</label>
+                        <div class="col-md-8">
+                            <%= form_input(type:"text", html_class:"form-control", id:"shippingcountry", placeholder: "Enter Shipping Country", value: @account, property: "ShippingCountry") %>
+                        </div>
+                    </div>
+                    <br/>
+                </div>
+            </div><!-- /.box-body -->
+            
+            
+        </div><!-- /.box -->
+
+    </div>
+</div>
+<div class="row">
+    <div class="col-md-12">
+        <div class="box box-primary" style="min-height:300px">
+            <div class="box-header">
+                <h3 class="box-title">Additional Information</h3>
+            </div><!-- /.box-header -->
+            <!-- form start -->
+            <div class="box-body">
+                <div class="col-md-6">
+                    <div class="form-group">
+                        <label for="contact" class="col-md-4">Customer Priority</label>
+                        <div class="col-md-8">
+                            <%= the_force_select(model: 'Account', property: 'CustomerPriority__c', class_name: 'form-control', id: 'customerpriority', name: 'customerpriority', value: @account) %>
+                        </div>
+                    </div>
+                    <br/>
+                    <div class="form-group">
+                        <label for="account" class="col-md-4">SLA Expiration Date</label>
+                        <div class="col-md-8">
+                            
+                            <%= form_input(type:"text",html_class:"form-control date_selector",id:"slaexpirationdate",placeholder: "Select SLA Expiration Date", additional: 'data-date-format="yyyy-mm-dd"', value: @account, property: "SLAExpirationDate__c") %>
+                        </div>
+                    </div>
+                    <br/>
+                    <div class="form-group">
+                        <label for="type" class="col-md-4">Number of Locations</label>
+                        <div class="col-md-8">
+                            <%= form_input(type:"number", html_class:"form-control", id:"numberoflocations", placeholder: "Enter Number of Locations", value: @account, property: "NumberofLocations__c") %>
+                        </div>
+                    </div>
+                    <br/>
+                    <div class="form-group">
+                        <label for="status" class="col-md-4">Active</label>
+                        <div class="col-md-8">
+                            <%= the_force_select(model: 'Account', property: 'Active__c', class_name: 'form-control', id: 'active', name: 'active', value: @account) %>                
+                        </div>
+                    </div>
+                    <br/>
+                </div>
+                <div class="col-md-6">
+                    <div class="form-group">
+                        <label for="status" class="col-md-4">SLA</label>
+                        <div class="col-md-8">
+                            <%= the_force_select(model: 'Account', property: 'SLA__c', class_name: 'form-control', id: 'sla', name: 'sla', value: @account) %>                
+                        </div>
+                    </div>
+                    <br/>
+                    <div class="form-group">
+                        <label for="account" class="col-md-4">SLA Serial Number</label>
+                        <div class="col-md-8">
+                            <%= form_input(type:"text", html_class:"form-control", id:"slaserialnumber", placeholder: "Enter SLA Serial Number", value: @account, property: "SLASerialNumber__c") %>
+                        </div>
+                    </div>
+                    <br/>
+                    <div class="form-group">
+                        <label for="type" class="col-md-4">Upsell Opportunity</label>
+                        <div class="col-md-8">
+                            <%= the_force_select(model: 'Account', property: 'UpsellOpportunity__c', class_name: 'form-control', id: 'upsellopportnity', name: 'upsellopportnity', value: @account) %>     
+                        </div>
+                    </div>
+                    <br/>
+                </div>
+                <br/>
+                <br/>
+                <br/>
+                <br/>
+                <br/>
+                <br/>
+                <br/>
+                <br/>
+            </div><!-- /.box-body -->
+            
+            <div class="box-footer">
+            </div>
+            
+        </div><!-- /.box -->
+
+    </div>
+</div>
+
+<div class="row">
+    <div class="col-md-12">
+        <div class="box box-primary" style="min-height:300px">
+            <div class="box-header">
+                <h3 class="box-title">Description Information</h3>
+            </div><!-- /.box-header -->
+            <!-- form start -->
+            <div class="box-body">
+                <div class="form-group">
+                    <label for="contact" class="col-md-4">Description</label>
+                    <div class="col-md-8">
+                        <textarea class="form-control" id="description" name="description" placeholder="Enter Description" rows="4"></textarea>
+                    </div>
+                </div>
+                <br/>
+                <br/>
+                <br/>
+                <br/>
+            </div><!-- /.box-body -->
+            
+            <div class="box-footer">
+                <button type="submit" class="btn btn-primary">Submit</button>
+            </div>
+            
+        </div><!-- /.box -->
+
+    </div>
+</div>
+</form>

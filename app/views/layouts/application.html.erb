@@ -1,0 +1,235 @@
+<% if current_client %>
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="UTF-8">
+        <title>DailyForce by Brian Diaz</title>
+        <meta content='width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no' name='viewport'>
+        <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track' => true %>
+        <link ref="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/bootstrap.datepicker/0.1/css/datepicker.css" />
+        <link href='https://fonts.googleapis.com/css?family=Satisfy' rel='stylesheet' type='text/css'>
+        <link href='https://fonts.googleapis.com/css?family=Raleway:200,300,400,700' rel='stylesheet' type='text/css'>
+        <%= csrf_meta_tags %>
+
+        <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
+        <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
+        <!--[if lt IE 9]>
+          <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
+          <script src="https://oss.maxcdn.com/libs/respond.js/1.3.0/respond.min.js"></script>
+        <![endif]-->
+    </head>
+    <body class="skin-black">
+
+        <header class="header">
+            <%= link_to "DailyForce", root_path, :class=>"logo" %>
+            <nav class="navbar navbar-static-top" role="navigation">
+                <!-- Sidebar toggle button-->
+                <a href="#" class="navbar-btn sidebar-toggle" data-toggle="offcanvas" role="button">
+                    <span class="sr-only">Toggle navigation</span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                </a>
+                <div class="navbar-right">
+                    <ul class="nav navbar-nav">
+                        <!-- User Account: style can be found in dropdown.less -->
+                        <li class="dropdown user user-menu">
+                            <a href="#" class="dropdown-toggle" data-toggle="dropdown">
+                                <i class="glyphicon glyphicon-user"></i>
+                                <span><%= current_user.name if current_user %> <i class="caret"></i></span>
+                            </a>
+                            <ul class="dropdown-menu">
+                                <!-- User image -->
+                                <li class="user-header bg-light-blue">
+                                    <img src="<%= profile_picture %>" class="img-circle" alt="User Image" />
+                                    <p>
+                                        <%= "#{current_user.name} - #{current_user.nick_name}" if current_user %>
+                                    </p>
+                                </li>
+                                <!-- Menu Footer-->
+                                <li class="user-footer">
+                                    <div class="pull-left">
+                                        <a href="#" class="btn btn-default btn-flat">Profile</a>
+                                    </div>
+                                    <div class="pull-right">
+                                        <%= link_to "SignOut", signout_path, :class=>"btn btn-default btn-flat" %>
+                                        
+                                    </div>
+                                </li>
+                            </ul>
+                        </li>
+                    </ul>
+                </div>
+            </nav>
+        </header>
+        <div class="wrapper row-offcanvas row-offcanvas-left">
+            <!-- Left side column. contains the logo and sidebar -->
+            <aside class="left-side sidebar-offcanvas">
+                <!-- sidebar: style can be found in sidebar.less -->
+                <section class="sidebar">
+                    <!-- Sidebar user panel -->
+                    <div class="user-panel">
+                        <div class="pull-left image">
+                            <img src="<%= profile_picture %>" class="img-circle" alt="User Image" />
+                        </div>
+                        <div class="pull-left info">
+                            <p>Hello, <%= "#{current_user.name}" if current_user %></p>
+
+                            <a href="#"><i class="fa fa-circle text-success"></i> Online</a>
+                        </div>
+                    </div>
+                    <!-- search form -->
+                    <form action="#" method="get" class="sidebar-form">
+                        <div class="input-group">
+                            <input type="text" name="q" class="form-control" placeholder="Search..."/>
+                            <span class="input-group-btn">
+                                <button type='submit' name='seach' id='search-btn' class="btn btn-flat"><i class="fa fa-search"></i></button>
+                            </span>
+                        </div>
+                    </form>
+                    <!-- /.search form -->
+                    <!-- sidebar menu: : style can be found in sidebar.less -->
+                    <ul class="sidebar-menu">
+                        <li>
+                            <%= link_to root_path do %>
+                                <i class="fa fa-dashboard"></i> 
+                                <span>Dashboard</span>
+                            <% end %>
+                        </li>
+                        <li class="treeview">
+                            <a href="#">
+                                <i class="fa fa-users"></i>
+                                <span>Accounts</span>
+                                <i class="fa fa-angle-left pull-right"></i>
+                            </a>
+                            <ul class="treeview-menu">
+                                <li><%= link_to accounts_path do %><i class="fa fa-list"></i> Show All<% end %></li>
+                                <li><%= link_to new_account_path do %><i class="fa fa-plus"></i> New<% end %></li>
+                            </ul>
+                        </li>
+                        <li class="treeview">
+                            <a href="#">
+                                <i class="fa fa-bar-chart-o"></i>
+                                <span>Campaigns</span>
+                                <i class="fa fa-angle-left pull-right"></i>
+                            </a>
+                            <ul class="treeview-menu">
+                                <li><%= link_to campaigns_path do %><i class="fa fa-list"></i> Show All<% end %></li>
+                                <li><%= link_to new_campaign_path do %><i class="fa fa-plus"></i> New<% end %></li>
+                            </ul>
+                        </li>
+                        <li class="treeview">
+                            <a href="#">
+                                <i class="fa fa-folder-open"></i>
+                                <span>Cases</span>
+                                <i class="fa fa-angle-left pull-right"></i>
+                            </a>
+                            <ul class="treeview-menu">
+                                <li><%= link_to cases_path do %><i class="fa fa-list"></i> Show All<% end %></li>
+                                <li><%= link_to new_case_path do %><i class="fa fa-plus"></i> New<% end %></li>
+                            </ul>
+                        </li>
+                        <li class="treeview">
+                            <a href="#">
+                                <i class="fa fa-phone-square"></i>
+                                <span>Contacts</span>
+                                <i class="fa fa-angle-left pull-right"></i>
+                            </a>
+                            <ul class="treeview-menu">
+                                <li><%= link_to contacts_path do %><i class="fa fa-list"></i> Show All<% end %></li>
+                                <li><%= link_to new_contact_path do %><i class="fa fa-plus"></i> New<% end %></li>
+                            </ul>
+                        </li>
+                        <li class="treeview">
+                            <a href="#">
+                                <i class="fa fa-trophy"></i>
+                                <span>Opportunities</span>
+                                <i class="fa fa-angle-left pull-right"></i>
+                            </a>
+                            <ul class="treeview-menu">
+                                <li><%= link_to opportunities_path do %><i class="fa fa-list"></i> Show All<% end %></li>
+                                <li><%= link_to new_opportunity_path do %><i class="fa fa-plus"></i> New<% end %></li>
+                            </ul>
+                        </li>
+                    </ul>
+                </section>
+                <!-- /.sidebar -->
+            </aside>
+
+            <!-- Right side column. Contains the navbar and content of the page -->
+            <aside class="right-side">
+                <!-- Content Header (Page header) -->
+                <section class="content-header">
+                    <h1>
+                        DailyForce
+                        <small>daily salesforce process management</small>
+                    </h1>
+                </section>
+
+                <!-- Main content -->
+                <section class="content">
+                  <%= yield %>
+                </section><!-- /.content -->
+            </aside><!-- /.right-side -->
+        </div><!-- ./wrapper -->
+    </body>
+    
+    <%= javascript_include_tag 'application', 'data-turbolinks-track' => true %>
+    <script type="text/javascript" src="//cdnjs.cloudflare.com/ajax/libs/jQuery-slimScroll/1.3.3/jquery.slimscroll.min.js"></script>
+    <script type="text/javascript" src="//cdn.jsdelivr.net/jquery.knob/1.2.11/jquery.knob.min.js"></script>
+    <script type="text/javascript" src="//cdn.jsdelivr.net/jquery.sparkline/2.1.2/jquery.sparkline.min.js"></script>
+    <script type="text/javascript" src="//cdn.jsdelivr.net/momentjs/2.8.4/moment.min.js"></script>
+    <script type="text/javascript" src="//cdn.jsdelivr.net/bootstrap.datepicker/0.1/js/bootstrap-datepicker.js"></script>
+    <script src="//cdn.jsdelivr.net/jquery.datatables/1.10.4/js/jquery.dataTables.min.js"></script>
+    <script src="//cdn.b3website.com/jquery-inputmask/jquery.inputmask.bundle.min.js"></script>
+
+    
+    <script>
+        $(function(){
+            $(".knob").knob();
+            $('#startdate').datepicker();
+            $('#enddate').datepicker();
+            $('.date_selector').datepicker();
+                
+            $('#datatable_filter').dataTable();
+            $(".sidebar .treeview").tree();
+            
+            $("[data-mask]").inputmask();
+         
+            var line = new Morris.Line({
+            element: 'line-chart',
+            resize: true,
+            data: [
+                {y: '2011 Q1', item1: 2666},
+                {y: '2011 Q2', item1: 2778},
+                {y: '2011 Q3', item1: 4912},
+                {y: '2011 Q4', item1: 3767},
+                {y: '2012 Q1', item1: 6810},
+                {y: '2012 Q2', item1: 5670},
+                {y: '2012 Q3', item1: 4820},
+                {y: '2012 Q4', item1: 15073},
+                {y: '2013 Q1', item1: 10687},
+                {y: '2013 Q2', item1: 8432}
+            ],
+            xkey: 'y',
+            ykeys: ['item1'],
+            labels: ['Item 1'],
+            lineColors: ['#efefef'],
+            lineWidth: 2,
+            hideHover: 'auto',
+            gridTextColor: "#fff",
+            gridStrokeWidth: 0.4,
+            pointSize: 4,
+            pointStrokeColors: ["#efefef"],
+            gridLineColor: "#efefef",
+            gridTextFamily: "Open Sans",
+            gridTextSize: 10
+        });
+    
+        })
+    </script>
+
+</html>
+<% else %>
+<%= yield %>
+<% end %>
